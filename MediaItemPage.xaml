@@ -47,18 +47,25 @@
                                        FontAttributes="Bold"
                                        TextColor="#6A5ACD"
                                        HorizontalOptions="Center" />
-                                
-                                <Label Text="{Binding Progress}"
-                                       FontSize="20"
-                                       FontAttributes="Bold"
-                                       TextColor="#6A5ACD"
-                                       HorizontalOptions="Center" />
-                                
+
                                 <Label Text="{Binding TotalVolumes}"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="#6A5ACD"
                                        HorizontalOptions="Center" />
+
+
+                                <HorizontalStackLayout Spacing="2">
+                                    <Label Text="Progres: " TextColor="Gray" FontSize="14" />
+                                    <Label Text="{Binding Progress}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#6A5ACD"
+                                       HorizontalOptions="Center" />
+                                    <Label Text="/" TextColor="Gray" />
+                                    <Label Text="{Binding TotalCount}" TextColor="Gray" />
+                                </HorizontalStackLayout>
+
 
                                 <HorizontalStackLayout Spacing="10"
                                                        HorizontalOptions="Center">

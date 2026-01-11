@@ -20,10 +20,6 @@ namespace AnimeMangaTrackerMAUI
             await Navigation.PushAsync(new MediaItemPage());
         }
 
-        async private void OnProgressClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ProgressPage());
-        }
     }
 
 }
