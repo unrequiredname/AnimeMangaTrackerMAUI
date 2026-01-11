@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AnimeMangaTrackerMAUI.CategoryPage"
-             Title="Categorii">
+             x:Class="AnimeMangaTrackerMAUI.AddMediaItemPage"
+             Title="AddMediaItemPage">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <Editor Placeholder="Enter a new category" 
+            <Editor Placeholder="Enter an entry" 
                     Margin="20"
-                    Text="{Binding Name}"
+                    Text="{Binding Title}"
                     HeightRequest="50" />
+            
+            <Editor Placeholder="Enter Type (Anime/Manga)" 
+                    Margin="20"
+                    Text="{Binding Type}"
+                    HeightRequest="100" />
+            
+            <Editor Placeholder="Enter Total Volumes" 
+                    Margin="20"
+                    Text="{Binding TotalVolumes}"
+                    HeightRequest="100" />
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -18,30 +28,18 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
-                <Button Text="Save Category" 
+
+                <Button Text="Save" 
                         Grid.Row="0" 
                         Grid.Column="0" 
                         Margin="10"
                         Clicked="OnSaveButtonClicked" />
 
-                <Button Text="Delete Category"
+                <Button Text="Cancel"
                         Grid.Row="0" 
                         Grid.Column="1" 
                         Margin="10"
-                        Clicked="OnDeleteButtonClicked" />
-
-                <ListView x:Name="listView"
-                          Grid.Row="2"
-                          Margin="10"
-                          IsRefreshing="True"
-                          ItemSelected="OnCategoryViewItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Name}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                        Clicked="OnCancelButtonClicked" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

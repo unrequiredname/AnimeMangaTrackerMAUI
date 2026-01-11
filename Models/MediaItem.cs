@@ -15,9 +15,10 @@ namespace AnimeMangaTrackerMAUI.Models
     public class MediaItem
     {
         [PrimaryKey, AutoIncrement]
+        [NotNull]
         public int Id { get; set; }
 
-        [NotNull]
+        [Required]
         public string Title { get; set; }
         public string Type { get; set; }
         public int TotalVolumes { get; set; }

@@ -14,13 +14,19 @@ namespace AnimeMangaTrackerMAUI.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
+        [Indexed]
         public int MediaItemId { get; set; }
-        [cite_start]
-        [Range(1, 10, ErrorMessage = "Rating-ul trebuie să fie între 1 și 10")]
-        public int Rating { get; set; }
-        public string Comment { get; set; }
+        
         public string UserEmail { get; set; }
-        public int StarRating { get; internal set; }
+        public string Comment { get; set; }
+        private int _rating;
+        public int Rating
+        {
+            get => _rating;
+            set => _rating = Math.Clamp(value, 1, 10);
+        }
+        public double StarRating { get; set; }
     }
 
     internal class cite_startAttribute : Attribute

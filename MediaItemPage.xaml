@@ -2,11 +2,91 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnimeMangaTrackerMAUI.MediaItemPage"
-             Title="MediaItemPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="My Anime Tracker"
+             BackgroundColor="#FFF9FB">
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="20">
+            <Grid ColumnDefinitions="*, Auto" 
+                  Margin="0, 10">
+                <HorizontalStackLayout Grid.Column="0" 
+                                       Spacing="10"
+                                       VerticalOptions="Center">
+                    <Label Text="✨ My Anime &amp; Manga Collection"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#6A5ACD"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <Button Grid.Column="1"
+                        Text="➕ Add New Entry"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#2D5A27"
+                        BackgroundColor="#B2F2BB"
+                        Padding="10,5"
+                        CornerRadius="15"
+                        Clicked="OnAddNewMediaItemClicked" />
+            </Grid>
+
+            <CollectionView x:Name="MediaItemsCollection"
+                            ItemsLayout="VerticalGrid, 2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#FFD1DC"
+                               CornerRadius="10"
+                               Padding="10"
+                               Margin="5"
+                               BackgroundColor="White"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                
+                                <Label Text="{Binding Title}"
+                                       FontSize="24"
+                                       FontAttributes="Bold"
+                                       TextColor="#6A5ACD"
+                                       HorizontalOptions="Center" />
+                                
+                                <Label Text="{Binding Type}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#6A5ACD"
+                                       HorizontalOptions="Center" />
+                                
+                                <Label Text="{Binding TotalVolumes}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#6A5ACD"
+                                       HorizontalOptions="Center" />
+
+                                <HorizontalStackLayout Spacing="10"
+                                                       HorizontalOptions="Center">
+
+                                    <Button Text="🗑️ Delete"
+                                        FontSize="14"
+                                        TextColor="White"
+                                        BackgroundColor="#FF6B6B"
+                                        Padding="5,2"
+                                        CornerRadius="10"
+                                        Clicked="OnDeleteMediaItemClicked"
+                                        CommandParameter="{Binding .}"/>
+
+                                    <Button Text="✏️ Edit"
+                                        FontSize="14"
+                                        TextColor="White"
+                                        BackgroundColor="#4ECDC4"
+                                        Padding="5,2"
+                                        CornerRadius="10"
+                                        Clicked="OnEditMediaItemClicked" 
+                                        CommandParameter="{Binding .}"    />
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -9,13 +9,13 @@ using SQLiteNetExtensions.Attributes;
 
 namespace AnimeMangaTrackerMAUI.Models
 {
+    [Table("Cattegory")]
     public class Category
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [NotNull]
+        [Unique]
         public string Name { get; set; }
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<MediaItem> MediaItems { get; set; } = new List<MediaItem>();
     }
 }

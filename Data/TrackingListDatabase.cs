@@ -16,11 +16,16 @@ namespace AnimeMangaTrackerMAUI.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
 
-            _database.CreateTableAsync<MediaItem>().Wait();
-            _database.CreateTableAsync<Category>().Wait();
-            _database.CreateTableAsync<UserTracker>().Wait();
-            _database.CreateTableAsync<Review>().Wait();
+            InitializeTables();
 
+        }
+
+        private async void InitializeTables()
+        {
+            await _database.CreateTableAsync<MediaItem>();
+            await _database.CreateTableAsync<Category>();
+            await _database.CreateTableAsync<UserTracker>();
+            await _database.CreateTableAsync<Review>();
         }
 
         // ------------------MEDIA ITEM METHODS ------------------
