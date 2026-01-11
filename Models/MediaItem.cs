@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace AnimeMangaTrackerMAUI.Models
 {
+    [Table("MediaItems")]
     public class MediaItem
     {
         [PrimaryKey, AutoIncrement]
