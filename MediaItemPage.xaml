@@ -2,11 +2,57 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnimeMangaTrackerMAUI.MediaItemPage"
-             Title="MediaItemPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Index Anime &amp; Manga">
+
+    <Grid RowDefinitions="*, Auto">
+        <ListView x:Name="listViewMedia" 
+                  Grid.Row="0" 
+                  ItemSelected="OnItemSelected"
+                  HasUnevenRows="True"
+                  SeparatorColor="LightGray">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Șterge" 
+                                      IsDestructive="True" 
+                                      CommandParameter="{Binding .}"
+                                      Clicked="OnDeleteClicked" />
+                        </ViewCell.ContextActions>
+
+                        <VerticalStackLayout Padding="15" Spacing="5">
+                            <Label Text="{Binding Title}" 
+                                   FontAttributes="Bold" 
+                                   FontSize="18" 
+                                   TextColor="Black" />
+
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding Status}" 
+                                       TextColor="DeepSkyBlue" 
+                                       FontSize="14" />
+
+                                <Label Text="|" TextColor="Gray" VerticalOptions="Center" />
+
+                                <HorizontalStackLayout Spacing="2">
+                                    <Label Text="Progres: " TextColor="Gray" FontSize="14" />
+                                    <Label Text="{Binding Progress}" FontAttributes="Bold" TextColor="Black" />
+                                    <Label Text="/" TextColor="Gray" />
+                                    <Label Text="{Binding TotalCount}" TextColor="Gray" />
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Adaugă Entry Nou" 
+                Grid.Row="1" 
+                Margin="15" 
+                Clicked="OnAddClicked" 
+                BackgroundColor="DeepSkyBlue"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50" />
+    </Grid>
 </ContentPage>

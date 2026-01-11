@@ -67,10 +67,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="MediaItemEntryPage.xaml.cs">
+	    <DependentUpon>MediaItemEntryPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="CategoryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MediaItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MediaItemEntryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ProgressPage.xaml">

@@ -22,7 +22,8 @@ namespace AnimeMangaTrackerMAUI.Models
         public string Title { get; set; } = string.Empty;
         public string? Type { get; set; }
         public int TotalVolumes { get; set; }
-
+        public int Progress { get; set; } 
+        public int TotalCount { get; set; } 
         [ForeignKey(typeof(Category))]
         public int? CategoryId { get; set; }
 

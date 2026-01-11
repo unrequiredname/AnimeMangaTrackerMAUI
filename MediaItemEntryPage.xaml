@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnimeMangaTrackerMAUI.MediaItemEntryPage"
+             Title="Tracking Progres">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Titlu" FontAttributes="Bold" />
+            <Entry Text="{Binding Title}" Placeholder="Ex: One Piece" />
+
+            <Label Text="Progres (Episoade/Capitole)" FontAttributes="Bold" />
+            <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10">
+                <Button Text="-" Clicked="OnDecrementClicked" Grid.Column="0" WidthRequest="50" BackgroundColor="Red" />
+
+                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="5">
+                    <Entry Text="{Binding Progress}" Keyboard="Numeric" WidthRequest="60" HorizontalTextAlignment="Center" />
+                    <Label Text="/" VerticalOptions="Center" FontSize="20" />
+                    <Entry Text="{Binding TotalCount}" Keyboard="Numeric" WidthRequest="60" HorizontalTextAlignment="Center" />
+                </HorizontalStackLayout>
+
+                <Button Text="+" Clicked="OnIncrementClicked" Grid.Column="2" WidthRequest="50" BackgroundColor="Green" />
+            </Grid>
+
+            <Label Text="Status" FontAttributes="Bold" />
+            <Picker Title="Selectează status" SelectedItem="{Binding Status}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Watching</x:String>
+                        <x:String>Completed</x:String>
+                        <x:String>On Hold</x:String>
+                        <x:String>Dropped</x:String>
+                        <x:String>Plan to Watch</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Salvează" Clicked="OnSaveClicked" BackgroundColor="DeepSkyBlue" TextColor="White" Margin="0,20,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
