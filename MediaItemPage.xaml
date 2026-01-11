@@ -48,7 +48,7 @@
                                        TextColor="#6A5ACD"
                                        HorizontalOptions="Center" />
                                 
-                                <Label Text="{Binding Type}"
+                                <Label Text="{Binding Progress}"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="#6A5ACD"

@@ -2,23 +2,92 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnimeMangaTrackerMAUI.AddMediaItemPage"
-             Title="AddMediaItemPage">
+             BackgroundColor="#FFF9FB">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <Editor Placeholder="Enter an entry" 
-                    Margin="20"
-                    Text="{Binding Title}"
-                    HeightRequest="50" />
-            
-            <Editor Placeholder="Enter Type (Anime/Manga)" 
-                    Margin="20"
-                    Text="{Binding Type}"
-                    HeightRequest="100" />
-            
-            <Editor Placeholder="Enter Total Volumes" 
-                    Margin="20"
-                    Text="{Binding TotalVolumes}"
-                    HeightRequest="100" />
+            <Label Text="Titlu"
+                   TextColor="#FF69B4"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"/>
+            <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10" BackgroundColor="White" Padding="10,0">
+                <Entry Placeholder="Enter an entry" 
+                       PlaceholderColor="Black"
+                       Margin="20"
+                       Text="{Binding Title}"
+                   TextColor="Black"
+                   FontSize="18"
+                   HeightRequest="50" />
+            </Border>
+
+            <Label Text="Progres (Episoade/Capitole)"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#FF69B4"
+                   HorizontalOptions="Start"
+                   Margin="0,20,0,20" />
+
+            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="5" >
+                <Button Text="-" 
+                        Clicked="OnDecrementClicked" 
+                        Grid.Column="0" 
+                        WidthRequest="50"
+                        TextColor="Black"
+                        BackgroundColor="Red" 
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        CornerRadius="10"/>
+                <Entry Text="{Binding Progress}" 
+                       Keyboard="Numeric" 
+                       WidthRequest="60" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="Black"
+                       />
+                <Label Text="/" 
+                       VerticalOptions="Center" 
+                       FontSize="20" 
+                       TextColor="Black"
+                       />
+                <Entry Text="{Binding TotalCount}" 
+                       Keyboard="Numeric" 
+                       WidthRequest="60" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="Black"
+                       />
+                <Button Text="+" 
+                        Clicked="OnIncrementClicked" 
+                        Grid.Column="2" 
+                        WidthRequest="50" 
+                        BackgroundColor="Green" 
+                        TextColor="Black"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        CornerRadius="10"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Status"
+                   FontAttributes="Bold"
+                   TextColor="#FF69B4"
+                   FontSize="24" />
+            <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10" BackgroundColor="White" Padding="10,10">
+                <Picker Title="Selecteaza status"
+                        TextColor="Black"
+                        TitleColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        BackgroundColor="Transparent"
+                        SelectedItem="{Binding Status}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Watching</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>On Hold</x:String>
+                            <x:String>Dropped</x:String>
+                            <x:String>Plan to Watch</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
